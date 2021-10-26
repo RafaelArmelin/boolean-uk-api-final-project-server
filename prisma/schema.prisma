@@ -27,9 +27,20 @@ model Question {
   title String   @db.VarChar(100)
   body  String
   date  DateTime @default(now())
+  tags  QuestionsOnTags[]
 }
 
 model Tag {
   id   Int    @id @default(autoincrement())
   name String @db.VarChar(30)
+  questions QuestionsOnTags[]
+}
+
+model QuestionsOnTags {
+  question Question @relation(fields: [questionId], references:[id])
+  questionId Int
+  tag Tag @relation(fields: [tagId], references:[id])
+  tagId Int
+
+  @@id([questionId, tagId])
 }
