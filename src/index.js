@@ -8,7 +8,7 @@ const app = express();
 
 /* SETUP MIDDLEWARE */
 
-const usersRouter = require("./resources/user/router")
+const usersRouter = require("./resources/user/router");
 
 app.disable("x-powered-by");
 
@@ -18,14 +18,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 const userRouter = require("./resources/user/router");
+const userProfileRouter = require("./resources/userProfile/router");
 
 /* SETUP ROUTES */
 
-<<<<<<< HEAD
 app.use("/users", userRouter);
-=======
-app.use("/users", usersRouter);
->>>>>>> 47ef6cd74c7624a8eab235f0c23e84f8155131dc
+app.use("/profile", userProfileRouter);
 
 app.get("*", (req, res) => {
   res.json({ ok: true });
