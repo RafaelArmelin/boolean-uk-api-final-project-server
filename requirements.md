@@ -3,7 +3,7 @@ to-dos
 ======
 [] GET for retrieving all records, including query parameters to allow filtering results
     [] getQuestionsByTags
-    [] getAllTags
+    [x] getAllTags
 
 [] GET for retrieving a single record by ID, including its related records in the response
     [x] getAllQuestions
