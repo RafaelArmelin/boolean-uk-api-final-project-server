@@ -18,12 +18,14 @@ app.use(morgan("dev"));
 const userRouter = require("./resources/user/router");
 const profileRouter = require("./resources/profile/router");
 const questionsRouter = require("./resources/questions/router");
+const tagsRouter = require("./resources/tags")
 
 /* SETUP ROUTES */
 
 app.use("/users", userRouter);
 app.use("/profile", profileRouter);
 app.use("/questions", questionsRouter);
+app.use("/tags", tagsRouter);
 
 app.get("*", (req, res) => {
   res.json({ ok: true });
