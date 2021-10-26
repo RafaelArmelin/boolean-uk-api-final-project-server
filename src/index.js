@@ -18,7 +18,7 @@ app.use(morgan("dev"));
 const userRouter = require("./resources/user/router");
 const profileRouter = require("./resources/profile/router");
 const questionsRouter = require("./resources/questions/router");
-const tagsRouter = require("./resources/tags")
+const tagsRouter = require("./resources/tags/router");
 
 /* SETUP ROUTES */
 

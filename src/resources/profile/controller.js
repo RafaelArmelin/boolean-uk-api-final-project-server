@@ -6,7 +6,7 @@ const createOne = async (req, res) => {
   const { gitHubUserName, location } = data;
 
   try {
-    const result = await prisma.user.create({
+    const result = await prisma.profile.create({
       data: {
         gitHubUserName,
         location,
