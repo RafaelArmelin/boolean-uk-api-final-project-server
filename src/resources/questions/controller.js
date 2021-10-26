@@ -40,6 +40,36 @@ async function getQuestionById(req, res){
 }
 
 
-module.exports = {getAllQuestions, getQuestionById}
+
+async function addOneQuestion(req, res) { 
+
+    console.log("req.body addOneQuestion: ", req.body);
+  
+    const id = req.params.id
+  
+    const { title, body, } = req.body;
+  
+    try{ 
+
+    // TO ADD TAGS FEATURE
+        const newQuestion = await prisma.question.create({
+            data : { 
+                title,
+                body,
+                userId : parseInt(id)
+            }, 
+            include : { 
+                tags : true
+            }
+        })
+        res.json({ resposne : newQuestion})
+    } catch(error) { 
+  
+        res.status(500).json({ error : error.message})
+    }
+  
+  }
+
+module.exports = {getAllQuestions, getQuestionById, addOneQuestion}
 
 

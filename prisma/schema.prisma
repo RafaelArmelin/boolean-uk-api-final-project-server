@@ -15,8 +15,8 @@ model User {
   id       Int    @unique @default(autoincrement())
   userName String @db.VarChar(255)
   questions Question[]
-}
 
+}
 model Profile {
   id             Int    @id @default(autoincrement())
   gitHubUserName String @db.VarChar(255)
