@@ -6,7 +6,8 @@ to-dos
     [] getAllTags
 
 [] GET for retrieving a single record by ID, including its related records in the response
-    [] getAllQuestions
+    [x] getAllQuestions
+    [x] getQuestionsById
     [] getUserQuestions
     [] getQuestionsByTags
 
