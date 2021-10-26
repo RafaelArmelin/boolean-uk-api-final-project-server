@@ -8,8 +8,6 @@ const app = express();
 
 /* SETUP MIDDLEWARE */
 
-const usersRouter = require("./resources/user/router");
-
 app.disable("x-powered-by");
 
 app.use(cors());
@@ -18,12 +16,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 const userRouter = require("./resources/user/router");
-const userProfileRouter = require("./resources/userProfile/router");
+const profileRouter = require("./resources/profile/router");
+const questionsRouter = require("./resources/questions/router");
 
 /* SETUP ROUTES */
 
 app.use("/users", userRouter);
-app.use("/profile", userProfileRouter);
+app.use("/profile", profileRouter);
+app.use("/questions", questionsRouter);
 
 app.get("*", (req, res) => {
   res.json({ ok: true });
