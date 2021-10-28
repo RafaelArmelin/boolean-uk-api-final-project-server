@@ -23,9 +23,9 @@ const getAllUsers = async (req, res) => {
   console.log("req.body: ", req.body);
 
   try {
-    const result = await prisma.user.findMany();
+    const users = await prisma.user.findMany();
 
-    res.json({ users: result });
+    res.json(users);
   } catch (error) {
     console.error(error);
 
