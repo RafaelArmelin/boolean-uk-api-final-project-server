@@ -42,8 +42,21 @@ const updateOneById = async (req, res) => {
     res.status(500).json({ error: error });
   }
 };
+const getProfileById = async (req, res) => {
+  try {
+    const idReq = req.params.id;
+    const profileToFind = await prisma.profile.findUnique({
+      where: { id: parseInt(idReq) },
+    });
+    res.json({ data: profileToFind });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error });
+  }
+};
 
 module.exports = {
   createOne,
   updateOneById,
+  getProfileById,
 };
