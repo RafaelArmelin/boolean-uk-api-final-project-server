@@ -7,9 +7,9 @@ const getAllTags = async(req, res) => {
     try{
         const allTags = await prisma.tag.findMany()
         console.log("allTags", allTags)
-        res.json({ response: allTags})
+        res.json(allTags)
     } catch(error) { 
-        res.status(500).json({erro : error.message})
+        res.status(500).json({error : error.message})
     }
 
 }

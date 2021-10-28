@@ -20,6 +20,7 @@ const createOne = async (req, res) => {
   }
 };
 
+
 const updateOneById = async (req, res) => {
   const profileToUpdate = {
     id: req.params.id,
@@ -30,7 +31,7 @@ const updateOneById = async (req, res) => {
   try {
     const result = await prisma.profile.update({
       where: {
-        id: req.params.parseInt(id),
+        id: parseInt(req.params.id),
       },
       data: {
         gitHubUserName: req.params.body,
@@ -42,6 +43,9 @@ const updateOneById = async (req, res) => {
     res.status(500).json({ error: error });
   }
 };
+
+
+// get profile
 
 module.exports = {
   createOne,

@@ -33,6 +33,8 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+// delete one user
+
 module.exports = {
   createOne,
   getAllUsers,

@@ -17,6 +17,7 @@ async function getAllQuestions(req, res) {
 
 }
 
+/// get quest for each individual user
 async function getQuestionById(req, res){ 
 
     const id = req.params.id; 
@@ -39,6 +40,7 @@ async function getQuestionById(req, res){
 
 }
 
+//
 async function addOneQuestion(req, res) { 
 
     console.log("req.body addOneQuestion: ", req.body);
