@@ -12,38 +12,42 @@ datasource db {
 }
 
 model User {
-  id       Int    @unique @default(autoincrement())
-  userName String @db.VarChar(255)
+  id        Int        @id @default(autoincrement())
+  userName  String     @db.VarChar(255)
   questions Question[]
-
+  profile   Profile?
 }
+
 model Profile {
   id             Int    @id @default(autoincrement())
   gitHubUserName String @db.VarChar(255)
   location       String @db.VarChar(255)
+  userId         Int
+  user           User   @relation(fields: [userId], references: [id])
+
 }
 
 model Question {
-  id    Int      @id @default(autoincrement())
-  title String   @db.VarChar(100)
-  body  String
-  date  DateTime @default(now())
-  user User @relation(fields: [userId], references:[id])
+  id     Int               @id @default(autoincrement())
+  title  String            @db.VarChar(100)
+  body   String
+  date   DateTime          @default(now())
+  user   User              @relation(fields: [userId], references: [id])
   userId Int
-  tags  QuestionsOnTags[]
+  tags   QuestionsOnTags[]
 }
 
 model Tag {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(30)
+  id        Int               @id @default(autoincrement())
+  name      String            @db.VarChar(30)
   questions QuestionsOnTags[]
 }
 
 model QuestionsOnTags {
-  question Question @relation(fields: [questionId], references:[id])
+  question   Question @relation(fields: [questionId], references: [id])
   questionId Int
-  tag Tag @relation(fields: [tagId], references:[id])
-  tagId Int
+  tag        Tag      @relation(fields: [tagId], references: [id])
+  tagId      Int
 
   @@id([questionId, tagId])
 }

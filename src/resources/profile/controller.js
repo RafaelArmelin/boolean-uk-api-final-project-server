@@ -1,3 +1,4 @@
+const { profile } = require("../../utils/database");
 const prisma = require("../../utils/database");
 
 const createOne = async (req, res) => {
@@ -19,6 +20,30 @@ const createOne = async (req, res) => {
   }
 };
 
+const updateOneById = async (req, res) => {
+  const profileToUpdate = {
+    id: req.params.id,
+    ...req.body,
+  };
+  const { gitHubUserName, location } = profileToUpdate;
+
+  try {
+    const result = await prisma.profile.update({
+      where: {
+        id: req.params.parseInt(id),
+      },
+      data: {
+        gitHubUserName: req.params.body,
+        location: req.params.body,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error });
+  }
+};
+
 module.exports = {
   createOne,
+  updateOneById,
 };
