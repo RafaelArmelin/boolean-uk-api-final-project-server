@@ -5,10 +5,10 @@ async function getAllQuestions(req, res) {
     console.log("req.body: ", req.body);
 
     try{ 
-        const allQuestions = await prisma.question.findMany()
+        const questions = await prisma.question.findMany()
 
 
-        res.json({response : allQuestions})
+        res.json(questions)
     } catch(error) { 
         console.error(); 
 
@@ -38,8 +38,6 @@ async function getQuestionById(req, res){
     }
 
 }
-
-
 
 async function addOneQuestion(req, res) { 
 

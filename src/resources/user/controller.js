@@ -12,7 +12,7 @@ const createOne = async (req, res) => {
         userName,
       },
     });
-    res.json({ data: result });
+    res.json(result);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error });
