@@ -32,8 +32,7 @@ async function getQuestionById(req, res) {
 }
 
 //
-async function addOneQuestion(req, res) { 
-
+async function addOneQuestion(req, res) {
   const id = req.params.id;
 
   const { title, body } = req.body;
@@ -62,6 +61,12 @@ const deleteQuestionById = async (req, res) => {
   try {
     const reqId = req.params.id;
     console.log("params: ", req.params.id);
+
+    await prisma.questionsOnTags.deleteMany({
+      where: {
+        questionId: parseInt(reqId),
+      },
+    });
 
     const deleteQuestion = await prisma.question.delete({
       where: {
