@@ -50,7 +50,7 @@ async function addOneQuestion(req, res) {
         tags: true,
       },
     });
-    res.json({ resposne: newQuestion });
+    res.json(newQuestion);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
