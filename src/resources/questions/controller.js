@@ -80,6 +80,29 @@ const deleteQuestionById = async (req, res) => {
   }
 };
 
+
+// async function updateOnebyId(req,res) { 
+
+//     const id = req.params.id;
+
+//     const newValues = req.body;
+
+//     console.log("newValues: ", newValues, "\n", "id: ", id)
+
+//     try {
+
+//         const updatedQuestion = await prisma.question.update({
+//             where : { 
+//                 id : parseInt(id)
+//             } 
+//         })
+//         res.json(updatedQuestion)
+//     } catch(error) {
+//         console.error(error)
+//         res.status(500).json({error : error.message})
+//     }
+// };
+
 module.exports = {
   getAllQuestions,
   getQuestionById,
